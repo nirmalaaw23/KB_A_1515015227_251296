@@ -1,0 +1,33 @@
+Sebutkan keyword yang ada pada prolog dan jelaskan fungsinya !
+1. DOMAINS
+Domain dalam Prolog seperti type dalam Pascal, yaitu untuk menyatakan jenis variable atau argumen, misalnya:
+domains
+kota = symbol
+alamat = string
+list = symbol*
+
+2. CLAUSES
+Clauses merupakan keyword yang paling penting pada program Visual Prolog. 
+Pada keyword inilah kita meletakkan fakta dan aturan. 
+Ketika mencari jawaban, Visual Prolog akan mencari dari bagian paling atas dari clauses,
+melihat setiap fakta dan aturan untuk mendapat jawaban benar,
+hingga kebagian paling bawah dari keyword ini.
+
+3. PREDICATES
+Sebelum mendefinsikan predikat di clauses,maka predikat tersebut harus dideklarasikan terlebih dahulu di predicates. 
+Kalau tidak, VisualProlog tidak akan mengenal predikat yang kita tuliskan tersebut. 
+Ketika mendeklarasikan suatu predikat, kita memberitahu Visual Prolog domain dari argumen yang dimiliki predikat tersebut.
+
+4. GOAL
+Secara esensial, goal sama dengan body dari sebuah aturan (rule), yaitu sederetan sub-sub goal. 
+Perbedaan antara goal dengan suatu aturan adalah setelah kata kunci goal tidak diikuti tanda :- dan Visual Prolog secara otomatis mengeksekusi goal ketika program dijalankan.
+
+5. FACTS
+section khusus untuk mendeklarasikan fakta di program yang menjadi bagian dari database dinamis.
+
+6. CONSTANTS
+Konstanta simbolis dapat digunakan di program Visual Prolog. Untuk itu sebelumnya harus dideklarasikan terlebih dahulu.
+
+7. Global
+Visual Prolog memperbolehkan untuk mendeklarasikan beberapa domain, predikat dan klausa menjadi global (daripada hanya lokal). 
+Caranya dengan menset secara terpisah section global domains, global predicates, dan global facts pada bagian paling atas dari program.
