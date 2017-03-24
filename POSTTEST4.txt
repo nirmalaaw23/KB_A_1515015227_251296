@@ -1,0 +1,39 @@
+predicates
+  buy_car(symbol,symbol) - determ (i,o)
+  car(symbol,symbol,integer) - nondeterm (i,o,o)
+  colors(symbol,symbol) - nondeterm (i,i)
+
+clauses
+  buy_car(Model,Color):-
+	car(Model,Color,Price),
+	colors(Color,mean),!,
+	Price > 25000.
+
+  car(maserati,green,25000).
+  car(corvette,black,28000).
+  car(sesuatu,black,26000).
+  car(porsche,red,24000).
+
+  colors(red,sexy).
+  colors(black,mean).
+  colors(green,preppy).
+
+goal
+  buy_car(corvette,Y).
+
+berikut adalah penjelasan terjadinya lacakbalik(backtracking) pada program diatas: 
+1. visual prolog memanggil car, subgoal pertama dari predikat buy_car.
+2. tes pada car pertama, maserati menghasilkan gagal.
+3. kemudian tes clausa car selanjutnya menemui kecocokan dan mengikat variable color ke mean black.
+4. karena berhasil, maka akan memanggil subgoal berikutnya apakah color car yang dipilih adalah color sexy.
+   black bukan warna sexy sehingga tes gagal.
+5. visual prolog lacakbalik ke pemanggil car dan sekali lagi mencari sebuah corvette yang memenuhi kriteria yang telah ditentukan.
+6. kemudian ditemukan dan sekali lagi menguji color car tersebut.
+   kali ini colornya adalah mean dan prolog melanjutkan ke subgoal berikutnya pada rule yaitu cut.
+   cut kemudian sukses dan secaraefektif "membekukan" variabel yang diikat pada klausa sebelumnya.
+7. visual prolog sekarang melanjutkan ke subgoal selanjutnya pada rule perbandingan:
+   
+   price>25000.
+
+   uji ini gagal dan visual prolog akan melakukan lacakbalik dalam rangka untuk mencari car yang lain untuk diuji.
+   namun karena ada cut yang mencegah lacakbalik, maka tidak ada jalan lain lagi untuk subgoal yang terakhir dan goal berhenti pada kondisi gagal.
